@@ -21,15 +21,15 @@ jobs:
 
       - name: Prepare PDF for deployment
         run: |
-          mkdir -p /tmp/cv-output
-          cp main.pdf /tmp/cv-output/main.pdf
+          mkdir -p cv-output
+          cp main.pdf cv-output/main.pdf
 
       - name: Push PDF to website
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.WEBSITE_REPO_TOKEN }}
         with:
-          source-directory: /tmp/cv-output
+          source-directory: cv-output
           destination-github-username: csaucet
           destination-repository-name: csaucet.github.io
           target-directory: assets/cv
