@@ -30,8 +30,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.WEBSITE_REPO_TOKEN }}
         with:
           source-directory: /tmp/cv-output
-          destination-github-username: charlottesaucet
-          destination-repository-name: charlottesaucet.github.io
+          destination-github-username: csaucet
+          destination-repository-name: csaucet.github.io
           target-directory: assets/cv
           target-branch: main
           commit-message: "Update CV from Overleaf [automated]"

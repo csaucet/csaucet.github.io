@@ -6,10 +6,8 @@ const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
-  // Shadow on scroll
   navbar.classList.toggle('scrolled', window.scrollY > 20);
 
-  // Active link highlight
   let current = '';
   sections.forEach(sec => {
     if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
@@ -29,7 +27,6 @@ navToggle.addEventListener('click', () => {
   navLinksList.classList.toggle('open');
 });
 
-// Close on link click
 navLinksList.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => navLinksList.classList.remove('open'));
 });
@@ -46,14 +43,22 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ============================================================
+   PUBLICATION ACCORDION
+   ============================================================ */
+function toggleAbstract(header) {
+  const item = header.closest('.pub-item');
+  item.classList.toggle('open');
+}
 
 /* ============================================================
    PUBLICATION FILTER
    ============================================================ */
-const filterBtns = document.querySelectorAll('.filter-btn');
-const pubCards = document.querySelectorAll('.pub-card');
-const pubGroups = document.querySelectorAll('.pub-group');
+const filterBtns  = document.querySelectorAll('.filter-btn');
+const pubItems    = document.querySelectorAll('.pub-item');
+const pubGroups   = document.querySelectorAll('.pub-group');
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -62,17 +67,16 @@ filterBtns.forEach(btn => {
 
     const filter = btn.dataset.filter;
 
-    pubCards.forEach(card => {
-      if (filter === 'all' || card.dataset.type === filter) {
-        card.classList.remove('hidden');
+    pubItems.forEach(item => {
+      if (filter === 'all' || item.dataset.type === filter) {
+        item.classList.remove('hidden');
       } else {
-        card.classList.add('hidden');
+        item.classList.add('hidden');
       }
     });
 
-    // Hide group titles if all cards in group are hidden
     pubGroups.forEach(group => {
-      const visible = group.querySelectorAll('.pub-card:not(.hidden)').length;
+      const visible = group.querySelectorAll('.pub-item:not(.hidden)').length;
       group.style.display = visible === 0 ? 'none' : '';
     });
   });
