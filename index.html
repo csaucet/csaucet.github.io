@@ -217,10 +217,19 @@
         <h3 class="pub-group-title reveal">Work in Progress</h3>
 
         <div class="pub-item reveal" data-type="wip">
-          <div class="pub-header">
+          <div class="pub-header" onclick="toggleAbstract(this)">
+            <button class="pub-toggle" aria-label="Show abstract">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
             <div class="pub-info">
               <div class="pub-title-text">Intertemporal Universalism</div>
               <div class="pub-meta">with J. Hagenbach · <span class="pub-status">Data collected</span></div>
+            </div>
+          </div>
+          <div class="pub-abstract-wrap">
+            <p class="pub-abstract-text"></p>
+            <div class="pub-abstract-links">
+              <a href="https://drive.google.com/file/d/1PDGQp4SyN5De44MLXCXDbO1RjmgKCn8H/view" target="_blank" rel="noopener" class="pub-link">Working paper →</a>
             </div>
           </div>
         </div>
